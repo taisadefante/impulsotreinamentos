@@ -1,0 +1,39 @@
+COMO USAR O PROJETO
+
+1) Instalar dependências:
+npm install
+
+2) Rodar local:
+npm run dev
+
+3) Onde colocar o logo:
+Substitua o arquivo:
+public/logo.png
+
+Use preferencialmente PNG com fundo transparente.
+
+4) Onde colocar as fotos das responsáveis técnicas:
+Substitua estes arquivos mantendo o mesmo nome:
+public/images/aniki.jpg
+public/images/juliana.jpg
+
+5) Página principal:
+app/page.tsx
+
+6) Componentes:
+components/Header.tsx
+components/Hero.tsx
+components/About.tsx
+components/Trainings.tsx
+components/TrainingCard.tsx
+components/TrainingModal.tsx
+components/Benefits.tsx
+components/CTA.tsx
+components/Contact.tsx
+components/Footer.tsx
+
+7) Dados dos treinamentos:
+data/siteData.tsx
+
+8) Envio de contato:
+Copie .env.example para .env.local e preencha SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS e CONTACT_TO.

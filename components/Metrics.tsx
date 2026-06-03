@@ -1,0 +1,3 @@
+import { C } from "@/data/siteData";
+import Reveal from "./Reveal";
+export default function Metrics() { const data = [["100%","Treinamentos práticos"],["8+","Soluções corporativas"],["1-2","Dias de imersão"],["RJ","Atendimento empresarial"]]; return <section className="metricsGrid" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16, padding: "0 7% 60px" }}>{data.map(([n,t],i) => <Reveal key={n} delay={i*.06}><div style={{ padding: 25, borderRadius: 26, background: "rgba(255,244,223,.075)", border: "1px solid rgba(255,216,120,.2)" }}><strong style={{ display: "block", color: C.gold2, fontSize: 32 }}>{n}</strong><span style={{ color: C.muted }}>{t}</span></div></Reveal>)}</section>; }
