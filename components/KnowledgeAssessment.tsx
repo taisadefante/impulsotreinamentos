@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties, ReactNode } from "react";
 import { motion } from "framer-motion";
 import {
   BarChart3,
@@ -11,7 +12,13 @@ import {
 } from "lucide-react";
 import { C } from "@/data/siteData";
 
-const steps = [
+type Step = {
+  icon: ReactNode;
+  title: string;
+  text: string;
+};
+
+const steps: Step[] = [
   {
     icon: <ClipboardCheck size={30} />,
     title: "Pré-prova",
@@ -29,7 +36,7 @@ const steps = [
   },
 ];
 
-const benefits = [
+const benefits: string[] = [
   "Avalia a evolução do conhecimento",
   "Gera indicadores de desempenho",
   "Comprova a eficácia da capacitação",
@@ -187,12 +194,12 @@ export default function KnowledgeAssessment() {
             Metodologia que gera dados, evolução e mais qualidade.
           </h3>
 
-          <p style={p}>
+          <p style={paragraphStyle}>
             A pré-prova identifica o nível inicial de conhecimento da equipe,
             auxiliando na condução do treinamento de forma mais assertiva.
           </p>
 
-          <p style={p}>
+          <p style={paragraphStyle}>
             Já a pós-prova permite mensurar a assimilação dos conteúdos
             apresentados, evidenciando o aprendizado adquirido e a eficácia da
             capacitação.
@@ -363,7 +370,7 @@ export default function KnowledgeAssessment() {
   );
 }
 
-const p = {
+const paragraphStyle: CSSProperties = {
   position: "relative",
   zIndex: 2,
   fontSize: 17,
