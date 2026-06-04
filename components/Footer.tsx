@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { C, whatsappLink } from "@/data/siteData";
 
 export default function Footer() {
@@ -69,22 +69,27 @@ export default function Footer() {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        title="Fale conosco pelo WhatsApp"
         style={{
           position: "fixed",
-          right: 20,
-          bottom: 20,
-          zIndex: 90,
-          width: 62,
-          height: 62,
+          right: 24,
+          bottom: 24,
+          zIndex: 9999,
+          width: 68,
+          height: 68,
           borderRadius: "50%",
-          display: "grid",
-          placeItems: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           background: "#25D366",
           color: "#fff",
-          boxShadow: "0 20px 60px rgba(0,0,0,.42)",
+          boxShadow: "0 12px 35px rgba(0,0,0,.35)",
+          textDecoration: "none",
+          transition: "all .3s ease",
         }}
       >
-        <MessageCircle size={28} />
+        <FaWhatsapp size={38} />
       </a>
     </>
   );
