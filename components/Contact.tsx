@@ -1,262 +1,123 @@
 "use client";
 
-import { FormEvent, ReactNode, useState } from "react";
-import type { CSSProperties } from "react";
-import { Mail } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ReactNode } from "react";
+import { Mail, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { C, whatsappLink, instagramLink } from "@/data/siteData";
 import SectionHeader from "./SectionHeader";
 
-type SendStatus = "idle" | "sending" | "success" | "error";
-
 export default function Contact() {
-  const [status, setStatus] = useState<SendStatus>("idle");
-
-  async function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("sending");
-
-    const formElement = e.currentTarget;
-    const form = new FormData(formElement);
-    const payload = Object.fromEntries(form.entries());
-
-    try {
-      const res = await fetch("/api/contato", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        setStatus("error");
-        return;
-      }
-
-      setStatus("success");
-      formElement.reset();
-
-      window.setTimeout(() => {
-        setStatus("idle");
-      }, 6000);
-    } catch {
-      setStatus("error");
-    }
-  }
-
   return (
     <section
       id="contato"
       style={{
         padding: "96px 7%",
         overflow: "hidden",
+        position: "relative",
       }}
     >
       <style>{contactAnimations}</style>
 
+      <div
+        style={{
+          position: "absolute",
+          width: 420,
+          height: 420,
+          borderRadius: "50%",
+          background: "rgba(255,216,120,.08)",
+          filter: "blur(80px)",
+          right: -160,
+          top: 80,
+          pointerEvents: "none",
+        }}
+      />
+
       <SectionHeader
         tag="Contato"
-        title="Solicite uma proposta personalizada."
+        title="Fale com a Impulso Treinamentos."
         centered
       />
 
-      <div
-        className="contactGrid"
+      <motion.p
+        initial={{ opacity: 0, y: 22 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
         style={{
-          display: "grid",
-          gridTemplateColumns: "1.1fr .9fr",
-          gap: 28,
-          alignItems: "stretch",
+          maxWidth: 820,
+          margin: "-28px auto 48px",
+          textAlign: "center",
+          color: C.muted,
+          fontSize: 18,
+          lineHeight: 1.8,
         }}
       >
-        <motion.form
-          onSubmit={submit}
-          initial={{ opacity: 0, y: 45 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            padding: 30,
-            borderRadius: 34,
-            background: "linear-gradient(145deg, #fffaf0, #f4e2bf)",
-            color: C.dark,
-            display: "grid",
-            gap: 14,
-            boxShadow: "0 30px 90px rgba(0,0,0,.25)",
-          }}
-        >
-          <Input name="nome" placeholder="Nome" />
-          <Input name="empresa" placeholder="Empresa" />
-          <Input name="telefone" placeholder="Telefone/WhatsApp" />
-          <Input name="email" placeholder="E-mail" type="email" />
+        Escolha o melhor canal de atendimento e fale com a nossa equipe para
+        solicitar uma proposta personalizada para sua empresa, escola ou equipe.
+      </motion.p>
 
-          <select name="treinamento" required style={input}>
-            <option value="">Selecione o treinamento</option>
-            <option>Impulso Essencial</option>
-            <option>Impulso Cuidar</option>
-            <option>Impulso Experience</option>
-            <option>Lei Lucas</option>
-            <option>Saúde Mental</option>
-            <option>Saúde da Mulher</option>
-            <option>Saúde da Segurança Masculina</option>
-            <option>Saúde e Segurança</option>
-          </select>
+      <div className="contactCardsGrid">
+        <ContactCard
+          icon={<WhatsappOfficialIcon />}
+          title="WhatsApp"
+          text="21 97479-6718"
+          description="Atendimento rápido para tirar dúvidas e solicitar orçamento."
+          href={whatsappLink}
+          delay={0}
+        />
 
-          <textarea
-            name="mensagem"
-            placeholder="Mensagem"
-            rows={5}
-            style={{
-              ...input,
-              resize: "vertical",
-              minHeight: 120,
-            }}
-          />
+        <ContactCard
+          icon={<InstagramOfficialIcon />}
+          title="Instagram"
+          text="@contato.impulsotreinamentos"
+          description="Acompanhe conteúdos, novidades, treinamentos e bastidores."
+          href={instagramLink}
+          delay={0.1}
+        />
 
-          <motion.button
-            type="submit"
-            disabled={status === "sending"}
-            whileHover={{
-              scale: status === "sending" ? 1 : 1.03,
-              y: status === "sending" ? 0 : -2,
-            }}
-            whileTap={{ scale: 0.98 }}
-            style={{
-              border: 0,
-              cursor: status === "sending" ? "not-allowed" : "pointer",
-              padding: "16px 20px",
-              borderRadius: 999,
-              background:
-                "linear-gradient(135deg, " + C.gold + ", " + C.gold2 + ")",
-              color: C.dark,
-              fontWeight: 900,
-              fontSize: 15,
-              boxShadow: "0 18px 40px rgba(130, 74, 0, .22)",
-              opacity: status === "sending" ? 0.7 : 1,
-            }}
-          >
-            {status === "sending" ? "Enviando..." : "Enviar solicitação"}
-          </motion.button>
-
-          <AnimatePresence>
-            {status === "success" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10 }}
-                style={successBox}
-              >
-                Solicitação enviada com sucesso! Em breve entraremos em contato.
-              </motion.div>
-            )}
-
-            {status === "error" && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10 }}
-                style={errorBox}
-              >
-                Não foi possível enviar agora. Chame pelo WhatsApp.
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.form>
-
-        <motion.div
-          initial={{ opacity: 0, x: 45 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            display: "grid",
-            gap: 16,
-          }}
-        >
-          <ContactCard
-            icon={<WhatsappOfficialIcon />}
-            title="WhatsApp"
-            text="21 97479-6718"
-            href={whatsappLink}
-            iconColor={C.gold2}
-          />
-
-          <ContactCard
-            icon={<InstagramOfficialIcon />}
-            title="Instagram"
-            text="@contato.impulsotreinamentos"
-            href={instagramLink}
-            iconColor={C.gold2}
-          />
-
-          <ContactCard
-            icon={<Mail size={30} />}
-            title="E-mail"
-            text="informacoes@impulsotreinamentos.com.br"
-            href="mailto:informacoes@impulsotreinamentos.com.br"
-            iconColor={C.gold2}
-          />
-
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            style={{
-              padding: 26,
-              borderRadius: 30,
-              background:
-                "linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.04))",
-              border: "1px solid rgba(255,216,120,.18)",
-              color: C.cream,
-            }}
-          >
-            <strong
-              style={{
-                display: "block",
-                fontSize: 22,
-                marginBottom: 10,
-                color: C.text,
-              }}
-            >
-              Atendimento personalizado
-            </strong>
-
-            <p
-              style={{
-                margin: 0,
-                color: C.muted,
-                lineHeight: 1.7,
-              }}
-            >
-              Informe sua necessidade e montamos uma proposta sob medida para
-              sua empresa, escola ou equipe.
-            </p>
-          </motion.div>
-        </motion.div>
+        <ContactCard
+          icon={<Mail size={31} />}
+          title="E-mail"
+          text="informacoes@impulsotreinamentos.com.br"
+          description="Envie sua solicitação formal para propostas e parcerias."
+          href="mailto:informacoes@impulsotreinamentos.com.br"
+          delay={0.2}
+        />
       </div>
-    </section>
-  );
-}
 
-function Input({
-  name,
-  placeholder,
-  type = "text",
-}: {
-  name: string;
-  placeholder: string;
-  type?: string;
-}) {
-  return (
-    <input
-      name={name}
-      placeholder={placeholder}
-      type={type}
-      required
-      style={input}
-    />
+      <motion.div
+        className="conversionText"
+        initial={{ opacity: 0, y: 34 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.85, delay: 0.25 }}
+      >
+        <span>Desenvolvemos pessoas. Potencializamos resultados.</span>
+
+        <h3>
+          Transforme sua equipe em um time mais preparado, produtivo e
+          confiante.
+        </h3>
+
+        <p>
+          Criamos treinamentos sob medida para fortalecer liderança,
+          comunicação, atendimento, vendas e performance, sempre alinhados aos
+          objetivos da sua empresa.
+        </p>
+
+        <motion.a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.04, y: -3 }}
+          whileTap={{ scale: 0.97 }}
+          className="conversionButton"
+        >
+          Solicitar proposta personalizada
+          <ArrowRight size={20} />
+        </motion.a>
+      </motion.div>
+    </section>
   );
 }
 
@@ -264,77 +125,119 @@ function ContactCard({
   icon,
   title,
   text,
+  description,
   href,
-  iconColor,
+  delay,
 }: {
   icon: ReactNode;
   title: string;
   text: string;
+  description: string;
   href: string;
-  iconColor: string;
+  delay: number;
 }) {
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 48, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{
+        duration: 0.8,
+        delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       whileHover={{
-        y: -6,
-        scale: 1.015,
+        y: -10,
+        scale: 1.018,
       }}
       whileTap={{ scale: 0.98 }}
       style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 18,
-        padding: 24,
-        borderRadius: 30,
+        position: "relative",
+        overflow: "hidden",
+        minHeight: 250,
+        padding: 30,
+        borderRadius: 34,
         background:
-          "linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.04))",
-        border: "1px solid rgba(255,216,120,.18)",
+          "linear-gradient(145deg, rgba(255,244,223,.11), rgba(255,255,255,.045))",
+        border: "1px solid rgba(255,216,120,.20)",
         color: C.cream,
         textDecoration: "none",
-        boxShadow: "0 24px 70px rgba(0,0,0,.22)",
-        transition: ".25s ease",
+        boxShadow: "0 28px 90px rgba(0,0,0,.25)",
       }}
     >
       <div
         style={{
-          width: 58,
-          height: 58,
-          borderRadius: 18,
+          position: "absolute",
+          top: -70,
+          right: -70,
+          width: 160,
+          height: 160,
+          borderRadius: "50%",
+          background: "rgba(255,216,120,.09)",
+        }}
+      />
+
+      <div
+        style={{
+          width: 68,
+          height: 68,
+          borderRadius: 22,
           display: "grid",
           placeItems: "center",
-          color: iconColor,
-          background: "rgba(255,216,120,.12)",
-          flexShrink: 0,
+          color: C.gold2,
+          background:
+            "linear-gradient(135deg, rgba(255,216,120,.18), rgba(255,244,223,.06))",
+          border: "1px solid rgba(255,216,120,.22)",
+          marginBottom: 24,
+          position: "relative",
+          zIndex: 2,
         }}
       >
         {icon}
       </div>
 
-      <div style={{ minWidth: 0 }}>
-        <strong
-          style={{
-            display: "block",
-            color: C.text,
-            fontSize: 18,
-            marginBottom: 4,
-          }}
-        >
-          {title}
-        </strong>
+      <h3
+        style={{
+          position: "relative",
+          zIndex: 2,
+          margin: "0 0 8px",
+          color: C.text,
+          fontSize: 27,
+          lineHeight: 1.1,
+        }}
+      >
+        {title}
+      </h3>
 
-        <span
-          style={{
-            color: C.muted,
-            fontSize: 15,
-            wordBreak: "break-word",
-          }}
-        >
-          {text}
-        </span>
-      </div>
+      <strong
+        style={{
+          position: "relative",
+          zIndex: 2,
+          display: "block",
+          color: C.gold2,
+          fontSize: 16,
+          marginBottom: 14,
+          wordBreak: "break-word",
+        }}
+      >
+        {text}
+      </strong>
+
+      <p
+        style={{
+          position: "relative",
+          zIndex: 2,
+          color: C.muted,
+          lineHeight: 1.7,
+          fontSize: 15,
+          margin: 0,
+        }}
+      >
+        {description}
+      </p>
     </motion.a>
   );
 }
@@ -342,8 +245,8 @@ function ContactCard({
 function WhatsappOfficialIcon() {
   return (
     <svg
-      width="30"
-      height="30"
+      width="31"
+      height="31"
       viewBox="0 0 32 32"
       fill="currentColor"
       aria-hidden="true"
@@ -356,8 +259,8 @@ function WhatsappOfficialIcon() {
 function InstagramOfficialIcon() {
   return (
     <svg
-      width="30"
-      height="30"
+      width="31"
+      height="31"
       viewBox="0 0 24 24"
       fill="currentColor"
       aria-hidden="true"
@@ -367,41 +270,74 @@ function InstagramOfficialIcon() {
   );
 }
 
-const input: CSSProperties = {
-  width: "100%",
-  padding: "15px 16px",
-  borderRadius: 16,
-  border: "1px solid rgba(91,7,7,.18)",
-  outline: "none",
-  fontSize: 15,
-  background: "#fff",
-  color: "#260000",
-  boxSizing: "border-box",
-};
-
-const successBox: CSSProperties = {
-  padding: "14px 16px",
-  borderRadius: 16,
-  background: "rgba(27,128,62,.12)",
-  border: "1px solid rgba(27,128,62,.25)",
-  color: "#12642f",
-  fontWeight: 800,
-  lineHeight: 1.5,
-};
-
-const errorBox: CSSProperties = {
-  padding: "14px 16px",
-  borderRadius: 16,
-  background: "rgba(150,0,0,.10)",
-  border: "1px solid rgba(150,0,0,.25)",
-  color: "#7a0000",
-  fontWeight: 800,
-  lineHeight: 1.5,
-};
-
 const contactAnimations = `
-@media (max-width: 900px) {
-  .contactGrid {
+.contactCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.conversionText {
+  max-width: 980px;
+  margin: 58px auto 0;
+  text-align: center;
+  position: relative;
+}
+
+.conversionText::before {
+  content: "";
+  display: block;
+  width: 92px;
+  height: 1px;
+  margin: 0 auto 30px;
+  background: linear-gradient(90deg, transparent, rgba(255,216,120,.85), transparent);
+}
+
+.conversionText span {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: ${C.gold2};
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.conversionText h3 {
+  max-width: 920px;
+  margin: 0 auto 18px;
+  color: ${C.text};
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.conversionText p {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  color: ${C.muted};
+  font-size: 19px;
+  line-height: 1.85;
+}
+
+.conversionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, ${C.gold2}, #fff1b8);
+  color: #2a0806;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 16px;
+  box-shadow: 0 20px 55px rgba(255,216,120,.18);
+}
+
+@media (max-width: 1000px) {
+  .contactCardsGrid {
     grid-template-columns: 1fr !important;
   }
 }
@@ -411,19 +347,22 @@ const contactAnimations = `
     padding: 72px 5% !important;
   }
 
-  .contactGrid form {
-    padding: 22px !important;
-    border-radius: 26px !important;
+  .conversionText {
+    margin-top: 44px;
   }
 
-  .contactGrid a {
-    padding: 20px !important;
-    border-radius: 24px !important;
+  .conversionText h3 {
+    font-size: 34px;
   }
 
-  .contactGrid a > div:first-child {
-    width: 50px !important;
-    height: 50px !important;
+  .conversionText p {
+    font-size: 16px;
+  }
+
+  .conversionButton {
+    width: 100%;
+    padding: 0 20px;
+    font-size: 15px;
   }
 }
 `;
