@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 import {
   CalendarDays,
@@ -16,129 +16,30 @@ import { C, whatsappLink } from "@/data/siteData";
 import Reveal from "./Reveal";
 
 export default function Hero() {
-  const { scrollYProgress } = useScroll();
-
-  const yHero = useTransform(scrollYProgress, [0, 0.35], [0, -120]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [1, 0.55]);
-
   return (
-    <section
-      id="inicio"
-      className="heroGrid"
-      style={{
-        minHeight: "88vh",
-        display: "grid",
-        gridTemplateColumns: "1.08fr .92fr",
-        gap: 46,
-        alignItems: "center",
-        padding: "82px 7% 96px",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
+    <section id="inicio" className="heroGrid">
       <style>{styles}</style>
 
-      <div
-        style={{
-          position: "absolute",
-          width: 420,
-          height: 420,
-          borderRadius: "50%",
-          background: "rgba(255,216,120,.12)",
-          filter: "blur(70px)",
-          top: 30,
-          left: -120,
-          pointerEvents: "none",
-        }}
-      />
+      <div className="heroGlow heroGlowLeft" />
+      <div className="heroGlow heroGlowRight" />
+      <div className="heroOverlay" />
 
-      <div
-        style={{
-          position: "absolute",
-          width: 520,
-          height: 520,
-          borderRadius: "50%",
-          background: "rgba(161,15,18,.24)",
-          filter: "blur(90px)",
-          right: -160,
-          bottom: 20,
-          pointerEvents: "none",
-        }}
-      />
-
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(90deg, rgba(23,0,0,.92), rgba(23,0,0,.55), rgba(23,0,0,.88))",
-          pointerEvents: "none",
-        }}
-      />
-
-      <motion.div
-        style={{
-          position: "relative",
-          zIndex: 2,
-          y: yHero,
-          opacity: opacityHero,
-        }}
-      >
+      <div className="heroContent">
         <Reveal>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 9,
-              padding: "10px 16px",
-              borderRadius: 999,
-              background: "rgba(255,244,223,.08)",
-              border: "1px solid rgba(255,216,120,.3)",
-              color: C.gold2,
-              fontWeight: 900,
-              boxShadow: "0 16px 45px rgba(0,0,0,.18)",
-            }}
-          >
+          <div className="heroBadge">
             <Sparkles size={17} />
             Treinamentos corporativos em saúde e segurança
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h1
-            className="heroTitle"
-            style={{
-              margin: "24px 0 0",
-              fontSize: "clamp(46px, 6.6vw, 88px)",
-              lineHeight: 0.95,
-              letterSpacing: -3,
-              textTransform: "uppercase",
-              color: C.text,
-              maxWidth: 980,
-            }}
-          >
-            Conhecimento que prepara.{" "}
-            <span
-              style={{
-                color: C.gold2,
-                display: "inline-block",
-              }}
-            >
-              Atitude que salva.
-            </span>
+          <h1 className="heroTitle">
+            Conhecimento que prepara. <span>Atitude que salva.</span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p
-            style={{
-              color: C.muted,
-              fontSize: 20,
-              lineHeight: 1.75,
-              maxWidth: 760,
-              margin: "26px 0 0",
-            }}
-          >
+          <p className="heroText">
             Capacitações práticas, humanizadas e atualizadas para empresas,
             escolas e equipes que desejam agir com confiança em situações reais.
           </p>
@@ -150,24 +51,9 @@ export default function Hero() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{
-                y: -3,
-                scale: 1.03,
-              }}
+              whileHover={{ y: -3, scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                padding: "16px 24px",
-                borderRadius: 999,
-                background:
-                  "linear-gradient(135deg, " + C.gold + ", " + C.gold2 + ")",
-                color: C.dark,
-                fontWeight: 900,
-                textDecoration: "none",
-                boxShadow: "0 18px 60px rgba(216,163,63,.30)",
-              }}
+              className="heroPrimaryBtn"
             >
               <WhatsappOfficialIcon />
               Solicitar proposta
@@ -175,23 +61,9 @@ export default function Hero() {
 
             <motion.a
               href="#treinamentos"
-              whileHover={{
-                y: -3,
-                scale: 1.03,
-              }}
+              whileHover={{ y: -3, scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "16px 24px",
-                borderRadius: 999,
-                border: "1px solid rgba(255,216,120,.25)",
-                color: C.cream,
-                fontWeight: 900,
-                textDecoration: "none",
-                background: "rgba(255,244,223,.045)",
-              }}
+              className="heroSecondaryBtn"
             >
               Conhecer treinamentos <ChevronRight size={18} />
             </motion.a>
@@ -205,77 +77,20 @@ export default function Hero() {
             <TrustItem icon={<HeartPulse size={18} />} text="Cuidado real" />
           </div>
         </Reveal>
-      </motion.div>
+      </div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9, rotate: -3, y: 30 }}
-        animate={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
-        transition={{ duration: 1.1, ease: "easeOut" }}
-        style={{
-          position: "relative",
-          zIndex: 2,
-          minHeight: 540,
-          borderRadius: 42,
-          padding: 34,
-          background:
-            "linear-gradient(145deg, rgba(255,244,223,.14), rgba(255,255,255,.045))",
-          border: "1px solid rgba(255,216,120,.32)",
-          boxShadow: "0 34px 120px rgba(0,0,0,.42)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          animation: "floatPulse 7s ease-in-out infinite",
-          overflow: "hidden",
-        }}
+        initial={{ opacity: 0, scale: 0.94, y: 24 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="heroCard"
       >
-        <div
-          style={{
-            position: "absolute",
-            top: -100,
-            right: -100,
-            width: 240,
-            height: 240,
-            borderRadius: "50%",
-            background: "rgba(255,216,120,.10)",
-          }}
-        />
-
-        <div
-          style={{
-            position: "absolute",
-            left: 26,
-            top: 26,
-            padding: "9px 13px",
-            borderRadius: 999,
-            background: "rgba(255,244,223,.08)",
-            border: "1px solid rgba(255,216,120,.22)",
-            color: C.gold2,
-            fontWeight: 900,
-            fontSize: 12,
-            letterSpacing: 1,
-            textTransform: "uppercase",
-          }}
-        >
-          100% prático
-        </div>
+        <div className="heroCardGlow" />
+        <div className="heroCardTag">100% prático</div>
 
         <motion.div
           whileHover={{ scale: 1.04, rotate: 1 }}
-          style={{
-            width: 230,
-            height: 230,
-            borderRadius: 46,
-            overflow: "hidden",
-            background: C.cream,
-            display: "grid",
-            placeItems: "center",
-            border: "2px solid " + C.gold,
-            boxShadow: "0 0 95px rgba(216,163,63,.38)",
-            position: "relative",
-            zIndex: 2,
-          }}
+          className="heroLogoBox"
         >
           <Image
             src="/logo.png"
@@ -283,39 +98,13 @@ export default function Hero() {
             width={230}
             height={230}
             priority
-            style={{
-              objectFit: "contain",
-              width: "100%",
-              height: "100%",
-            }}
+            className="heroLogo"
           />
         </motion.div>
 
-        <h2
-          style={{
-            fontSize: 36,
-            margin: "28px 0 8px",
-            textTransform: "uppercase",
-            letterSpacing: 1,
-            color: C.text,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          Impulso Treinamentos
-        </h2>
+        <h2 className="heroCardTitle">Impulso Treinamentos</h2>
 
-        <p
-          style={{
-            color: C.muted,
-            fontSize: 17,
-            maxWidth: 430,
-            lineHeight: 1.6,
-            margin: 0,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
+        <p className="heroCardText">
           Primeiros Socorros • Lei Lucas • Saúde Ocupacional • Bem-estar
         </p>
 
@@ -346,37 +135,18 @@ function Mini({
   text: string;
 }) {
   return (
-    <motion.div
-      whileHover={{ y: -5, scale: 1.03 }}
-      style={{
-        padding: 18,
-        borderRadius: 24,
-        background: "rgba(255,244,223,.08)",
-        border: "1px solid rgba(255,216,120,.18)",
-        color: C.cream,
-        textAlign: "left",
-      }}
-    >
-      <div style={{ color: C.gold2 }}>{icon}</div>
-      <strong style={{ display: "block", marginTop: 10 }}>{title}</strong>
-      <span style={{ color: C.muted, fontSize: 13 }}>{text}</span>
+    <motion.div whileHover={{ y: -5, scale: 1.03 }} className="heroMini">
+      <div className="heroMiniIcon">{icon}</div>
+      <strong>{title}</strong>
+      <span>{text}</span>
     </motion.div>
   );
 }
 
 function TrustItem({ icon, text }: { icon: ReactNode; text: string }) {
   return (
-    <div
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: 8,
-        color: C.muted,
-        fontWeight: 800,
-        fontSize: 14,
-      }}
-    >
-      <span style={{ color: C.gold2 }}>{icon}</span>
+    <div className="heroTrustItem">
+      <span>{icon}</span>
       {text}
     </div>
   );
@@ -397,11 +167,122 @@ function WhatsappOfficialIcon() {
 }
 
 const styles = `
+.heroGrid {
+  min-height: 88vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+  gap: clamp(30px, 4vw, 54px);
+  align-items: center;
+  padding: clamp(76px, 8vw, 104px) 7%;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroContent,
+.heroCard {
+  position: relative;
+  z-index: 2;
+}
+
+.heroGlow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.heroGlowLeft {
+  width: 420px;
+  height: 420px;
+  background: rgba(255,216,120,.12);
+  filter: blur(70px);
+  top: 30px;
+  left: -120px;
+}
+
+.heroGlowRight {
+  width: 520px;
+  height: 520px;
+  background: rgba(161,15,18,.24);
+  filter: blur(90px);
+  right: -160px;
+  bottom: 20px;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(23,0,0,.94), rgba(23,0,0,.62), rgba(23,0,0,.9));
+  pointer-events: none;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 100%;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,244,223,.08);
+  border: 1px solid rgba(255,216,120,.3);
+  color: ${C.gold2};
+  font-weight: 900;
+  box-shadow: 0 16px 45px rgba(0,0,0,.18);
+}
+
+.heroTitle {
+  margin: 24px 0 0;
+  font-size: clamp(38px, 5.7vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -2.4px;
+  text-transform: uppercase;
+  color: ${C.text};
+  max-width: 920px;
+}
+
+.heroTitle span {
+  color: ${C.gold2};
+  display: inline-block;
+}
+
+.heroText {
+  color: ${C.muted};
+  font-size: clamp(16px, 1.45vw, 20px);
+  line-height: 1.65;
+  max-width: 720px;
+  margin: 24px 0 0;
+}
+
 .heroButtons {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin-top: 32px;
+}
+
+.heroPrimaryBtn,
+.heroSecondaryBtn {
+  min-height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.heroPrimaryBtn {
+  background: linear-gradient(135deg, ${C.gold}, ${C.gold2});
+  color: ${C.dark};
+  box-shadow: 0 18px 60px rgba(216,163,63,.30);
+}
+
+.heroSecondaryBtn {
+  border: 1px solid rgba(255,216,120,.25);
+  color: ${C.cream};
+  background: rgba(255,244,223,.045);
 }
 
 .heroTrust {
@@ -412,57 +293,304 @@ const styles = `
   margin-top: 28px;
 }
 
-.heroMiniGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+.heroTrustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: ${C.muted};
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.heroTrustItem span {
+  color: ${C.gold2};
+}
+
+.heroCard {
   width: 100%;
-  margin-top: 28px;
+  min-height: 500px;
+  border-radius: 42px;
+  padding: 92px 34px 34px;
+  background: linear-gradient(145deg, rgba(255,244,223,.14), rgba(255,255,255,.045));
+  border: 1px solid rgba(255,216,120,.32);
+  box-shadow: 0 34px 120px rgba(0,0,0,.42);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  animation: floatPulse 7s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.heroCardGlow {
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255,216,120,.10);
+}
+
+.heroCardTag {
+  position: absolute;
+  left: 26px;
+  top: 26px;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(255,244,223,.08);
+  border: 1px solid rgba(255,216,120,.22);
+  color: ${C.gold2};
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.heroLogoBox {
+  width: clamp(150px, 15vw, 210px);
+  height: clamp(150px, 15vw, 210px);
+  border-radius: clamp(28px, 3vw, 46px);
+  overflow: hidden;
+  background: ${C.cream};
+  display: grid;
+  place-items: center;
+  border: 2px solid ${C.gold};
+  box-shadow: 0 0 95px rgba(216,163,63,.38);
   position: relative;
   z-index: 2;
 }
 
+.heroLogo {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.heroCardTitle {
+  font-size: clamp(25px, 3vw, 36px);
+  margin: 26px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: ${C.text};
+  position: relative;
+  z-index: 2;
+}
+
+.heroCardText {
+  color: ${C.muted};
+  font-size: clamp(15px, 1.4vw, 17px);
+  max-width: 430px;
+  line-height: 1.55;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.heroMiniGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  margin-top: 45px;
+  position: relative;
+  z-index: 2;
+}
+
+.heroMini {
+  padding: 22px 20px;
+  border-radius: 24px;
+  background: rgba(255,244,223,.08);
+  border: 1px solid rgba(255,216,120,.18);
+  color: ${C.cream};
+  text-align: left;
+  min-height: 112px;
+}
+
+.heroMiniIcon {
+  color: ${C.gold2};
+}
+
+.heroMini strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.heroMini span {
+  display: block;
+  color: ${C.muted};
+  font-size: 13px;
+  margin-top: 4px;
+}
+
 @keyframes floatPulse {
-  0%, 100% {
-    transform: translateY(0);
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 1180px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(330px, .85fr);
+    gap: 34px;
   }
 
-  50% {
-    transform: translateY(-10px);
+  .heroTitle {
+    font-size: clamp(38px, 5.3vw, 68px);
+  }
+
+  .heroCard {
+    padding: 88px 26px 30px;
   }
 }
 
 @media (max-width: 1080px) {
   .heroGrid {
-    grid-template-columns: 1fr !important;
-    min-height: auto !important;
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 76px;
+  }
+
+  .heroContent {
+    text-align: center;
+  }
+
+  .heroTitle,
+  .heroText {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heroButtons,
+  .heroTrust {
+    justify-content: center;
+  }
+
+  .heroCard {
+    max-width: 620px;
+    min-height: auto;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .heroGrid {
+    padding: 66px 6% 72px;
   }
 
   .heroTitle {
-    font-size: clamp(42px, 9vw, 76px) !important;
+    font-size: clamp(36px, 9vw, 56px);
+    letter-spacing: -1.7px;
+  }
+
+  .heroButtons {
+    justify-content: center;
+  }
+
+  .heroCard {
+    border-radius: 34px;
+    padding: 88px 24px 30px;
   }
 }
 
 @media (max-width: 620px) {
   .heroGrid {
-    padding: 64px 5% 72px !important;
+    padding: 58px 5% 64px;
+    gap: 34px;
+  }
+
+  .heroBadge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 12px;
+    line-height: 1.35;
+  }
+
+  .heroTitle {
+    font-size: clamp(33px, 10.4vw, 45px);
+    line-height: 1.05;
+    letter-spacing: -1.4px;
+  }
+
+  .heroText {
+    font-size: 16px;
+    line-height: 1.55;
   }
 
   .heroButtons {
-    flex-direction: column !important;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .heroButtons a {
-    width: 100% !important;
-    justify-content: center !important;
+    width: 100%;
+    white-space: normal;
+    text-align: center;
   }
 
   .heroTrust {
-    gap: 14px !important;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .heroTrustItem {
+    font-size: 13px;
+  }
+
+  .heroCard {
+    border-radius: 30px;
+    padding: 86px 18px 26px;
+  }
+
+  .heroCardTag {
+    left: 18px;
+    top: 18px;
+    font-size: 11px;
+  }
+
+  .heroLogoBox {
+    width: 150px;
+    height: 150px;
+  }
+
+  .heroCardTitle {
+    margin-top: 22px;
+    font-size: 25px;
+    line-height: 1.15;
+  }
+
+  .heroCardText {
+    font-size: 15px;
   }
 
   .heroMiniGrid {
-    grid-template-columns: 1fr !important;
+    margin-top: 34px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .heroMini {
+    min-height: auto;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 31px;
+  }
+
+  .heroPrimaryBtn,
+  .heroSecondaryBtn {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+  .heroCard {
+    padding: 82px 14px 22px;
   }
 }
 `;
