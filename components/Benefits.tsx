@@ -38,10 +38,12 @@ export default function Benefits() {
           style={{
             margin: 0,
             color: C.text,
-            fontSize: "clamp(34px, 4vw, 58px)",
-            lineHeight: 1.05,
-            fontWeight: 900,
-            letterSpacing: "-1px",
+            fontSize: "clamp(28px, 3vw, 46px)",
+            lineHeight: 1.15,
+            fontWeight: 700,
+            letterSpacing: "-0.5px",
+            maxWidth: 900,
+            marginInline: "auto",
           }}
         >
           Empresas fortes não esperam emergências acontecerem.

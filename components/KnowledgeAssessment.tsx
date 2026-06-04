@@ -87,11 +87,11 @@ export default function KnowledgeAssessment() {
           transition={{ duration: 0.7 }}
           style={{
             color: C.gold2,
-            fontWeight: 900,
-            letterSpacing: 5,
+            fontWeight: 800,
+            letterSpacing: 4,
             textTransform: "uppercase",
-            margin: "0 0 16px",
-            fontSize: 13,
+            margin: "0 0 14px",
+            fontSize: 12,
           }}
         >
           Avaliação de conhecimento
@@ -105,10 +105,12 @@ export default function KnowledgeAssessment() {
           style={{
             margin: 0,
             color: C.text,
-            fontSize: "clamp(34px, 4vw, 60px)",
-            lineHeight: 1.06,
-            fontWeight: 900,
-            letterSpacing: "-1px",
+            fontSize: "clamp(28px, 3vw, 48px)",
+            lineHeight: 1.15,
+            fontWeight: 700,
+            letterSpacing: "-0.5px",
+            maxWidth: 900,
+            marginInline: "auto",
           }}
         >
           Pré e pós-prova em todos os nossos planos.
@@ -120,11 +122,11 @@ export default function KnowledgeAssessment() {
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.12 }}
           style={{
-            maxWidth: 900,
-            margin: "24px auto 0",
+            maxWidth: 860,
+            margin: "22px auto 0",
             color: C.muted,
-            fontSize: 18,
-            lineHeight: 1.8,
+            fontSize: 16.5,
+            lineHeight: 1.75,
           }}
         >
           Na Impulso Treinamentos, capacitar vai além de transmitir informações.
@@ -164,8 +166,8 @@ export default function KnowledgeAssessment() {
 
           <div
             style={{
-              width: 74,
-              height: 74,
+              width: 72,
+              height: 72,
               borderRadius: 24,
               display: "grid",
               placeItems: "center",
@@ -178,15 +180,17 @@ export default function KnowledgeAssessment() {
               zIndex: 2,
             }}
           >
-            <BarChart3 size={34} />
+            <BarChart3 size={32} />
           </div>
 
           <h3
             style={{
               margin: "0 0 18px",
               color: C.wine,
-              fontSize: "clamp(26px, 3vw, 38px)",
-              lineHeight: 1.08,
+              fontSize: "clamp(24px, 2.5vw, 34px)",
+              lineHeight: 1.15,
+              fontWeight: 700,
+              letterSpacing: "-0.5px",
               position: "relative",
               zIndex: 2,
             }}
@@ -210,8 +214,9 @@ export default function KnowledgeAssessment() {
               display: "block",
               marginTop: 22,
               color: C.wine,
-              fontSize: 18,
-              lineHeight: 1.45,
+              fontSize: 17,
+              lineHeight: 1.5,
+              fontWeight: 700,
               position: "relative",
               zIndex: 2,
             }}
@@ -260,8 +265,8 @@ export default function KnowledgeAssessment() {
               >
                 <div
                   style={{
-                    width: 58,
-                    height: 58,
+                    width: 56,
+                    height: 56,
                     borderRadius: 20,
                     display: "grid",
                     placeItems: "center",
@@ -278,7 +283,9 @@ export default function KnowledgeAssessment() {
                   style={{
                     margin: "0 0 8px",
                     color: C.text,
-                    fontSize: 22,
+                    fontSize: 20,
+                    fontWeight: 700,
+                    letterSpacing: "-0.3px",
                   }}
                 >
                   {step.title}
@@ -289,7 +296,7 @@ export default function KnowledgeAssessment() {
                     margin: 0,
                     color: C.muted,
                     lineHeight: 1.65,
-                    fontSize: 15,
+                    fontSize: 14.5,
                   }}
                 >
                   {step.text}
@@ -318,8 +325,8 @@ export default function KnowledgeAssessment() {
             >
               <div
                 style={{
-                  width: 52,
-                  height: 52,
+                  width: 50,
+                  height: 50,
                   borderRadius: 18,
                   display: "grid",
                   placeItems: "center",
@@ -327,14 +334,16 @@ export default function KnowledgeAssessment() {
                   background: "rgba(255,216,120,.12)",
                 }}
               >
-                <TrendingUp size={26} />
+                <TrendingUp size={25} />
               </div>
 
               <strong
                 style={{
                   color: C.text,
-                  fontSize: 22,
-                  lineHeight: 1.2,
+                  fontSize: 20,
+                  lineHeight: 1.25,
+                  fontWeight: 700,
+                  letterSpacing: "-0.3px",
                 }}
               >
                 O que essa avaliação entrega?
@@ -354,8 +363,9 @@ export default function KnowledgeAssessment() {
                     alignItems: "center",
                     gap: 10,
                     color: C.cream,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     lineHeight: 1.45,
+                    fontSize: 14.5,
                   }}
                 >
                   <CheckCircle2 size={18} color={C.gold2} />
@@ -373,8 +383,8 @@ export default function KnowledgeAssessment() {
 const paragraphStyle: CSSProperties = {
   position: "relative",
   zIndex: 2,
-  fontSize: 17,
-  lineHeight: 1.8,
+  fontSize: 16,
+  lineHeight: 1.75,
   color: "#4a1616",
   margin: "0 0 18px",
 };

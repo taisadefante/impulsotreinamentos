@@ -20,8 +20,8 @@ export default function About() {
       <div
         style={{
           textAlign: "center",
-          maxWidth: 1120,
-          margin: "0 auto 62px",
+          maxWidth: 980,
+          margin: "0 auto 56px",
         }}
       >
         <motion.p
@@ -31,11 +31,11 @@ export default function About() {
           transition={{ duration: 0.7 }}
           style={{
             color: C.gold2,
-            fontWeight: 900,
-            letterSpacing: 5,
+            fontWeight: 800,
+            letterSpacing: 4,
             textTransform: "uppercase",
-            margin: "0 0 16px",
-            fontSize: 13,
+            margin: "0 0 14px",
+            fontSize: 12,
           }}
         >
           Quem somos
@@ -49,13 +49,13 @@ export default function About() {
           style={{
             margin: 0,
             color: C.text,
-            fontSize: "clamp(34px, 4vw, 60px)",
-            lineHeight: 1.06,
-            fontWeight: 900,
-            letterSpacing: "-1px",
+            fontSize: "clamp(30px, 3.4vw, 48px)",
+            lineHeight: 1.14,
+            fontWeight: 800,
+            letterSpacing: "-0.8px",
           }}
         >
-          Cuidado, prevenção e conhecimento para transformar ambientes.
+          Cuidado e conhecimento para equipes mais seguras.
         </motion.h2>
       </div>
 
@@ -65,74 +65,31 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            position: "relative",
-            padding: 38,
-            borderRadius: 36,
-            background:
-              "linear-gradient(145deg, rgba(255,244,223,.98), rgba(244,226,191,.95))",
-            color: C.dark,
-            boxShadow: "0 30px 90px rgba(0,0,0,.25)",
-            overflow: "hidden",
-          }}
+          className="aboutCardLight"
         >
-          <div
-            style={{
-              position: "absolute",
-              top: -80,
-              right: -80,
-              width: 190,
-              height: 190,
-              borderRadius: "50%",
-              background: "rgba(91,7,7,.08)",
-            }}
-          />
+          <div className="aboutCircleLight" />
 
-          <div
-            style={{
-              display: "flex",
-              gap: 14,
-              flexWrap: "wrap",
-              marginBottom: 28,
-            }}
-          >
-            <Badge icon={<HeartPulse size={18} />} text="Cuidado" />
-            <Badge icon={<ShieldCheck size={18} />} text="Prevenção" />
-            <Badge icon={<Award size={18} />} text="Conhecimento" />
+          <div className="aboutBadges">
+            <Badge icon={<HeartPulse size={16} />} text="Cuidado" />
+            <Badge icon={<ShieldCheck size={16} />} text="Prevenção" />
+            <Badge icon={<Award size={16} />} text="Conhecimento" />
           </div>
 
           <p style={p}>
-            A Impulso Treinamentos nasceu com o propósito de transformar
-            conhecimento em ação, promovendo treinamentos que unem teoria,
-            prática e experiências reais.
+            A Impulso Treinamentos nasceu para tornar o conhecimento mais
+            acessível, prático e aplicável no dia a dia.
           </p>
 
           <p style={p}>
-            Somos uma equipe comprometida com educação, prevenção e
-            desenvolvimento de pessoas preparadas para agir com segurança e
-            confiança diante de situações do cotidiano e emergências.
+            Unimos teoria, prática e experiências reais para preparar pessoas,
+            empresas e instituições a agirem com mais segurança em situações
+            importantes.
           </p>
 
-          <div
-            style={{
-              marginTop: 28,
-              padding: 22,
-              borderRadius: 26,
-              background:
-                "linear-gradient(135deg, rgba(91,7,7,.10), rgba(217,164,65,.16))",
-              border: "1px solid rgba(91,7,7,.10)",
-            }}
-          >
-            <strong
-              style={{
-                display: "block",
-                color: C.wine,
-                fontSize: 21,
-                lineHeight: 1.35,
-              }}
-            >
-              Capacitar pessoas é gerar impacto, promover segurança e salvar
-              vidas.
+          <div className="aboutHighlight">
+            <strong>
+              Mais do que ensinar, nosso propósito é preparar pessoas para
+              cuidar, prevenir e agir com confiança.
             </strong>
           </div>
         </motion.div>
@@ -142,28 +99,9 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            position: "relative",
-            padding: 34,
-            borderRadius: 36,
-            background:
-              "linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.04))",
-            border: "1px solid rgba(255,216,120,.22)",
-            boxShadow: "0 30px 90px rgba(0,0,0,.22)",
-            overflow: "hidden",
-          }}
+          className="aboutCardDark"
         >
-          <div
-            style={{
-              position: "absolute",
-              inset: "auto -120px -120px auto",
-              width: 260,
-              height: 260,
-              borderRadius: "50%",
-              background: "rgba(255,216,120,.08)",
-              pointerEvents: "none",
-            }}
-          />
+          <div className="aboutCircleDark" />
 
           <div
             style={{
@@ -174,10 +112,10 @@ export default function About() {
             <p
               style={{
                 color: C.gold2,
-                fontWeight: 900,
-                letterSpacing: 4,
+                fontWeight: 800,
+                letterSpacing: 3.5,
                 textTransform: "uppercase",
-                fontSize: 12,
+                fontSize: 11,
                 margin: "0 0 10px",
               }}
             >
@@ -188,11 +126,13 @@ export default function About() {
               style={{
                 margin: 0,
                 color: C.text,
-                fontSize: "clamp(28px, 3vw, 42px)",
-                lineHeight: 1.05,
+                fontSize: "clamp(25px, 2.5vw, 34px)",
+                lineHeight: 1.15,
+                fontWeight: 800,
+                letterSpacing: "-0.5px",
               }}
             >
-              Profissionais preparadas para cuidar da sua equipe.
+              Especialistas preparadas para orientar sua equipe.
             </h3>
           </div>
 
@@ -223,13 +163,13 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: 8,
-        padding: "10px 14px",
+        gap: 7,
+        padding: "9px 13px",
         borderRadius: 999,
         background: "rgba(91,7,7,.08)",
         color: C.wine,
-        fontWeight: 900,
-        fontSize: 13,
+        fontWeight: 800,
+        fontSize: 12,
       }}
     >
       {icon}
@@ -255,48 +195,16 @@ function Person({
         y: -8,
         scale: 1.02,
       }}
-      style={{
-        position: "relative",
-        padding: "28px 22px",
-        borderRadius: 30,
-        background:
-          "linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.045))",
-        border: "1px solid rgba(255,216,120,.20)",
-        textAlign: "center",
-        overflow: "hidden",
-      }}
+      className="personCard"
     >
-      <div
-        style={{
-          position: "absolute",
-          top: -45,
-          right: -45,
-          width: 120,
-          height: 120,
-          borderRadius: "50%",
-          background: "rgba(255,216,120,.08)",
-        }}
-      />
+      <div className="personGlow" />
 
-      <div
-        style={{
-          width: 168,
-          height: 168,
-          borderRadius: "50%",
-          overflow: "hidden",
-          margin: "0 auto 20px",
-          background: C.cream,
-          border: `4px solid ${C.gold}`,
-          boxShadow: "0 22px 55px rgba(0,0,0,.32)",
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
+      <div className="personImageWrap">
         <Image
           src={img}
           alt={name}
-          width={168}
-          height={168}
+          width={156}
+          height={156}
           style={{
             width: "100%",
             height: "100%",
@@ -305,56 +213,20 @@ function Person({
         />
       </div>
 
-      <strong
-        style={{
-          display: "block",
-          color: C.text,
-          fontSize: 22,
-          marginBottom: 6,
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        {name}
-      </strong>
+      <strong className="personName">{name}</strong>
 
-      <span
-        style={{
-          display: "block",
-          color: C.muted,
-          fontSize: 14,
-          marginBottom: 12,
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        {role}
-      </span>
+      <span className="personRole">{role}</span>
 
-      <span
-        style={{
-          display: "inline-flex",
-          padding: "9px 13px",
-          borderRadius: 999,
-          background: "rgba(255,216,120,.14)",
-          color: C.gold2,
-          fontWeight: 900,
-          fontSize: 13,
-          position: "relative",
-          zIndex: 2,
-        }}
-      >
-        {coren}
-      </span>
+      <span className="personCoren">{coren}</span>
     </motion.div>
   );
 }
 
 const p = {
-  fontSize: 18,
+  fontSize: 16.5,
   lineHeight: 1.8,
   color: "#4a1616",
-  margin: "0 0 18px",
+  margin: "0 0 16px",
 };
 
 const styles = `
@@ -365,10 +237,136 @@ const styles = `
   align-items: stretch;
 }
 
+.aboutCardLight {
+  position: relative;
+  padding: 36px;
+  border-radius: 34px;
+  background: linear-gradient(145deg, rgba(255,244,223,.98), rgba(244,226,191,.95));
+  color: ${C.dark};
+  box-shadow: 0 28px 80px rgba(0,0,0,.22);
+  overflow: hidden;
+}
+
+.aboutCircleLight {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: rgba(91,7,7,.08);
+}
+
+.aboutBadges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.aboutHighlight {
+  margin-top: 26px;
+  padding: 20px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(91,7,7,.09), rgba(217,164,65,.14));
+  border: 1px solid rgba(91,7,7,.10);
+}
+
+.aboutHighlight strong {
+  display: block;
+  color: ${C.wine};
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 800;
+}
+
+.aboutCardDark {
+  position: relative;
+  padding: 32px;
+  border-radius: 34px;
+  background: linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,216,120,.22);
+  box-shadow: 0 28px 80px rgba(0,0,0,.22);
+  overflow: hidden;
+}
+
+.aboutCircleDark {
+  position: absolute;
+  inset: auto -120px -120px auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255,216,120,.08);
+  pointer-events: none;
+}
+
 .peoplePremiumGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
+}
+
+.personCard {
+  position: relative;
+  padding: 26px 20px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.045));
+  border: 1px solid rgba(255,216,120,.20);
+  text-align: center;
+  overflow: hidden;
+}
+
+.personGlow {
+  position: absolute;
+  top: -45px;
+  right: -45px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,216,120,.08);
+}
+
+.personImageWrap {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 18px;
+  background: ${C.cream};
+  border: 4px solid ${C.gold};
+  box-shadow: 0 20px 50px rgba(0,0,0,.30);
+  position: relative;
+  z-index: 2;
+}
+
+.personName {
+  display: block;
+  color: ${C.text};
+  font-size: 20px;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.personRole {
+  display: block;
+  color: ${C.muted};
+  font-size: 14px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.personCoren {
+  display: inline-flex;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(255,216,120,.14);
+  color: ${C.gold2};
+  font-weight: 800;
+  font-size: 13px;
+  position: relative;
+  z-index: 2;
 }
 
 @media (max-width: 1050px) {
@@ -386,6 +384,21 @@ const styles = `
 @media (max-width: 520px) {
   #sobre {
     padding: 72px 5% !important;
+  }
+
+  .aboutCardLight,
+  .aboutCardDark {
+    padding: 26px 20px;
+    border-radius: 28px;
+  }
+
+  .aboutBadges {
+    gap: 8px;
+  }
+
+  .personImageWrap {
+    width: 138px;
+    height: 138px;
   }
 }
 `;

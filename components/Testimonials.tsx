@@ -9,61 +9,61 @@ const testimonials = [
     name: "Mariana Souza",
     role: "Coordenadora de RH",
     company: "Empresa de Serviços",
-    text: "O treinamento foi muito além da teoria. A equipe saiu mais confiante, sabendo como agir em situações de emergência.",
+    text: "A equipe ficou mais segura e confiante para agir em situações de emergência. O treinamento foi claro, prático e muito bem conduzido.",
   },
   {
     name: "Renata Almeida",
     role: "Gestora Administrativa",
     company: "Clínica Corporativa",
-    text: "As instrutoras conduziram tudo com muita clareza, prática e cuidado. Foi um treinamento leve, profissional e extremamente necessário.",
+    text: "As instrutoras explicaram tudo com cuidado e leveza. Foi uma capacitação profissional, necessária e muito bem aplicada.",
   },
   {
     name: "Carlos Henrique",
     role: "Supervisor Operacional",
     company: "Área Logística",
-    text: "A dinâmica prática fez toda diferença. Nossa equipe entendeu a importância da prevenção e do atendimento correto.",
+    text: "A parte prática fez muita diferença. Os colaboradores participaram, tiraram dúvidas e entenderam a importância da prevenção.",
   },
   {
     name: "Fernanda Lima",
     role: "Diretora Escolar",
     company: "Escola Particular",
-    text: "Contratamos o treinamento Lei Lucas e ficamos muito satisfeitos. Conteúdo objetivo, humanizado e bem aplicado.",
+    text: "O treinamento Lei Lucas foi objetivo, humanizado e muito importante para nossa equipe escolar.",
   },
   {
     name: "Patrícia Gomes",
     role: "Analista de Pessoas",
     company: "Empresa Administrativa",
-    text: "Foi uma experiência muito positiva. O conteúdo trouxe segurança para a equipe e despertou mais consciência sobre prevenção.",
+    text: "Foi uma experiência muito positiva. O conteúdo trouxe mais consciência, segurança e preparo para a equipe.",
   },
   {
     name: "Eduardo Martins",
     role: "Gerente Operacional",
     company: "Setor Industrial",
-    text: "A abordagem prática ajudou muito. Os colaboradores participaram bastante e saíram com mais preparo para agir corretamente.",
+    text: "A abordagem prática aproximou o conteúdo da rotina dos colaboradores. Todos saíram mais preparados.",
   },
   {
     name: "Juliana Ferreira",
     role: "Coordenadora Pedagógica",
     company: "Instituição de Ensino",
-    text: "O treinamento foi conduzido com profissionalismo, acolhimento e muita responsabilidade. Recomendo para outras escolas.",
+    text: "O treinamento foi conduzido com responsabilidade, acolhimento e excelente didática. Recomendo para outras escolas.",
   },
   {
     name: "André Ribeiro",
     role: "Gestor de Segurança",
     company: "Empresa Corporativa",
-    text: "A capacitação agregou valor para nossa cultura interna. Foi clara, organizada e com exemplos reais do ambiente de trabalho.",
+    text: "A capacitação contribuiu para fortalecer nossa cultura de segurança. Foi organizada, clara e muito relevante.",
   },
   {
     name: "Camila Torres",
     role: "Business Partner",
     company: "Empresa de Tecnologia",
-    text: "A equipe da Impulso trouxe uma condução segura, didática e muito próxima da realidade das empresas. Foi excelente.",
+    text: "A Impulso trouxe uma condução segura, didática e próxima da realidade das empresas.",
   },
   {
     name: "Marcelo Azevedo",
     role: "Coordenador de Operações",
     company: "Centro de Distribuição",
-    text: "O formato prático ajudou nossos colaboradores a entenderem como agir com rapidez, cuidado e responsabilidade.",
+    text: "O formato prático ajudou os colaboradores a entenderem como agir com rapidez, cuidado e responsabilidade.",
   },
 ];
 
@@ -86,8 +86,8 @@ export default function Testimonials() {
         style={{
           padding: "0 7%",
           textAlign: "center",
-          maxWidth: 1350,
-          margin: "0 auto 56px",
+          maxWidth: 1180,
+          margin: "0 auto 54px",
         }}
       >
         <motion.p
@@ -97,11 +97,11 @@ export default function Testimonials() {
           transition={{ duration: 0.7 }}
           style={{
             color: C.gold2,
-            fontWeight: 900,
-            letterSpacing: 5,
+            fontWeight: 700,
+            letterSpacing: 4,
             textTransform: "uppercase",
-            marginBottom: 16,
-            fontSize: 13,
+            marginBottom: 14,
+            fontSize: 12,
           }}
         >
           Depoimentos
@@ -115,16 +115,15 @@ export default function Testimonials() {
           style={{
             margin: 0,
             color: C.text,
-            fontSize: "clamp(32px, 3vw, 54px)",
-            lineHeight: 1.12,
-            fontWeight: 900,
-            maxWidth: 1150,
+            fontSize: "clamp(28px, 3vw, 44px)",
+            lineHeight: 1.16,
+            fontWeight: 700,
+            maxWidth: 900,
             marginInline: "auto",
-            letterSpacing: "-1px",
+            letterSpacing: "-0.5px",
           }}
         >
-          Treinamentos que transformam equipes, fortalecem empresas e salvam
-          vidas.
+          Empresas que confiam em treinamentos práticos, humanos e seguros.
         </motion.h2>
 
         <motion.p
@@ -133,35 +132,21 @@ export default function Testimonials() {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.15 }}
           style={{
-            maxWidth: 850,
-            margin: "22px auto 0",
+            maxWidth: 760,
+            margin: "20px auto 0",
             color: C.muted,
-            fontSize: 17,
-            lineHeight: 1.75,
+            fontSize: 16,
+            lineHeight: 1.7,
           }}
         >
-          Experiências reais de empresas que confiaram na Impulso Treinamentos
-          para desenvolver equipes mais preparadas, seguras e confiantes.
+          Relatos de equipes que participaram das capacitações da Impulso
+          Treinamentos e passaram a atuar com mais preparo, prevenção e
+          confiança.
         </motion.p>
       </div>
 
-      <div
-        className="testimonialCarousel"
-        style={{
-          width: "100%",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        <div
-          className="testimonialTrack"
-          style={{
-            display: "flex",
-            gap: 22,
-            width: "max-content",
-            animation: "testimonialScroll 46s linear infinite",
-          }}
-        >
+      <div className="testimonialCarousel">
+        <div className="testimonialTrack">
           {duplicated.map((item, index) => (
             <motion.article
               key={`${item.name}-${index}`}
@@ -169,110 +154,28 @@ export default function Testimonials() {
                 y: -8,
                 scale: 1.015,
               }}
-              style={{
-                width: 430,
-                minHeight: 280,
-                position: "relative",
-                overflow: "hidden",
-                padding: 30,
-                borderRadius: 32,
-                background:
-                  "linear-gradient(145deg, rgba(255,244,223,.11), rgba(255,255,255,.045))",
-                border: "1px solid rgba(255,216,120,.20)",
-                boxShadow: "0 24px 70px rgba(0,0,0,.25)",
-                flexShrink: 0,
-              }}
+              className="testimonialCard"
             >
-              <div
-                style={{
-                  position: "absolute",
-                  top: -70,
-                  right: -70,
-                  width: 155,
-                  height: 155,
-                  borderRadius: "50%",
-                  background: "rgba(255,216,120,.09)",
-                }}
-              />
+              <div className="testimonialGlow" />
 
-              <Quote
-                size={44}
-                color={C.gold2}
-                style={{
-                  position: "absolute",
-                  right: 24,
-                  bottom: 22,
-                  opacity: 0.22,
-                }}
-              />
+              <Quote className="testimonialQuote" size={40} />
 
-              <div
-                style={{
-                  display: "flex",
-                  gap: 4,
-                  marginBottom: 18,
-                }}
-              >
+              <div className="testimonialStars">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={16} color={C.gold2} fill={C.gold2} />
+                  <Star key={i} size={15} color={C.gold2} fill={C.gold2} />
                 ))}
               </div>
 
-              <p
-                style={{
-                  color: C.cream,
-                  lineHeight: 1.75,
-                  fontSize: 15,
-                  margin: "0 0 30px",
-                }}
-              >
-                “{item.text}”
-              </p>
+              <p className="testimonialText">“{item.text}”</p>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                  marginTop: "auto",
-                }}
-              >
-                <div
-                  style={{
-                    width: 54,
-                    height: 54,
-                    borderRadius: "50%",
-                    display: "grid",
-                    placeItems: "center",
-                    background:
-                      "linear-gradient(135deg, rgba(255,216,120,.18), rgba(255,244,223,.06))",
-                    border: "1px solid rgba(255,216,120,.28)",
-                    color: C.gold2,
-                    flexShrink: 0,
-                  }}
-                >
-                  <UserRoundCheck size={27} />
+              <div className="testimonialPerson">
+                <div className="testimonialAvatar">
+                  <UserRoundCheck size={25} />
                 </div>
 
                 <div>
-                  <strong
-                    style={{
-                      display: "block",
-                      color: C.text,
-                      fontSize: 16,
-                    }}
-                  >
-                    {item.name}
-                  </strong>
-
-                  <span
-                    style={{
-                      display: "block",
-                      color: C.muted,
-                      fontSize: 13,
-                      lineHeight: 1.4,
-                    }}
-                  >
+                  <strong>{item.name}</strong>
+                  <span>
                     {item.role} • {item.company}
                   </span>
                 </div>
@@ -286,8 +189,99 @@ export default function Testimonials() {
 }
 
 const styles = `
+.testimonialCarousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
 .testimonialCarousel:hover .testimonialTrack {
   animation-play-state: paused;
+}
+
+.testimonialTrack {
+  display: flex;
+  gap: 22px;
+  width: max-content;
+  animation: testimonialScroll 48s linear infinite;
+}
+
+.testimonialCard {
+  width: 400px;
+  min-height: 250px;
+  position: relative;
+  overflow: hidden;
+  padding: 27px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,244,223,.10), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,216,120,.18);
+  box-shadow: 0 22px 60px rgba(0,0,0,.23);
+  flex-shrink: 0;
+}
+
+.testimonialGlow {
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(255,216,120,.08);
+}
+
+.testimonialQuote {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  opacity: .16;
+  color: ${C.gold2};
+}
+
+.testimonialStars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.testimonialText {
+  color: ${C.cream};
+  line-height: 1.7;
+  font-size: 14.8px;
+  margin: 0 0 28px;
+}
+
+.testimonialPerson {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: auto;
+}
+
+.testimonialAvatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(255,216,120,.18), rgba(255,244,223,.06));
+  border: 1px solid rgba(255,216,120,.26);
+  color: ${C.gold2};
+  flex-shrink: 0;
+}
+
+.testimonialPerson strong {
+  display: block;
+  color: ${C.text};
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.testimonialPerson span {
+  display: block;
+  color: ${C.muted};
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 @keyframes testimonialScroll {
@@ -308,8 +302,8 @@ const styles = `
 
 @media (max-width: 650px) {
   #depoimentos h2 {
-    font-size: 34px !important;
-    letter-spacing: -1px !important;
+    font-size: 31px !important;
+    letter-spacing: -0.5px !important;
   }
 
   #depoimentos p {

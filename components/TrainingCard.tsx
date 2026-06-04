@@ -49,20 +49,20 @@ export default function TrainingCard({
           ease: [0.16, 1, 0.3, 1],
         }}
         whileHover={{
-          y: -12,
-          scale: 1.018,
-          rotateZ: -0.5,
+          y: -10,
+          scale: 1.015,
+          rotateZ: -0.35,
         }}
         style={{
           position: "relative",
           overflow: "hidden",
-          padding: 30,
-          borderRadius: 34,
-          minHeight: 390,
+          padding: 28,
+          borderRadius: 32,
+          minHeight: 372,
           background:
-            "linear-gradient(145deg, rgba(255,244,223,.14), rgba(88,15,15,.55))",
-          border: "1px solid rgba(255,216,120,.28)",
-          boxShadow: "0 28px 90px rgba(0,0,0,.30)",
+            "linear-gradient(145deg, rgba(255,244,223,.13), rgba(88,15,15,.52))",
+          border: "1px solid rgba(255,216,120,.24)",
+          boxShadow: "0 24px 75px rgba(0,0,0,.28)",
           transformStyle: "preserve-3d",
         }}
       >
@@ -71,7 +71,7 @@ export default function TrainingCard({
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(circle at top left, rgba(255,216,120,.18), transparent 38%)",
+              "radial-gradient(circle at top left, rgba(255,216,120,.16), transparent 38%)",
             pointerEvents: "none",
           }}
         />
@@ -84,7 +84,7 @@ export default function TrainingCard({
             width: "70%",
             height: "100%",
             background:
-              "linear-gradient(90deg, transparent, rgba(255,216,120,.18), transparent)",
+              "linear-gradient(90deg, transparent, rgba(255,216,120,.16), transparent)",
             animation: "cardShine 5.5s infinite",
             animationDelay: `${index * 0.4}s`,
             pointerEvents: "none",
@@ -104,13 +104,13 @@ export default function TrainingCard({
           <motion.div
             whileHover={{ rotate: 8, scale: 1.08 }}
             style={{
-              width: 68,
-              height: 68,
-              borderRadius: 22,
+              width: 62,
+              height: 62,
+              borderRadius: 21,
               display: "grid",
               placeItems: "center",
               background:
-                "linear-gradient(135deg, rgba(255,216,120,.22), rgba(255,255,255,.05))",
+                "linear-gradient(135deg, rgba(255,216,120,.20), rgba(255,255,255,.05))",
               color: C.gold2,
               border: "1px solid rgba(255,216,120,.22)",
             }}
@@ -121,10 +121,10 @@ export default function TrainingCard({
           <span
             style={{
               color: C.gold2,
-              fontWeight: 900,
-              fontSize: 12,
+              fontWeight: 700,
+              fontSize: 11.5,
               textTransform: "uppercase",
-              letterSpacing: 0.5,
+              letterSpacing: 0.6,
             }}
           >
             {item.label}
@@ -135,9 +135,11 @@ export default function TrainingCard({
           <h3
             style={{
               margin: "24px 0 10px",
-              fontSize: 28,
+              fontSize: 25,
               color: C.text,
-              lineHeight: 1.1,
+              lineHeight: 1.16,
+              fontWeight: 700,
+              letterSpacing: "-0.4px",
             }}
           >
             {item.title}
@@ -147,8 +149,9 @@ export default function TrainingCard({
             style={{
               color: C.muted,
               lineHeight: 1.65,
-              minHeight: 78,
+              minHeight: 76,
               margin: 0,
+              fontSize: 15,
             }}
           >
             {item.description}
@@ -169,8 +172,9 @@ export default function TrainingCard({
                   alignItems: "center",
                   gap: 9,
                   color: C.cream,
-                  fontSize: 14,
+                  fontSize: 13.5,
                   fontWeight: 600,
+                  lineHeight: 1.35,
                 }}
               >
                 <CheckCircle2 size={16} color={C.gold2} />
@@ -192,7 +196,8 @@ export default function TrainingCard({
               borderRadius: 999,
               background: C.cream,
               color: C.wine,
-              fontWeight: 900,
+              fontWeight: 700,
+              fontSize: 14,
               boxShadow: "0 12px 30px rgba(0,0,0,.18)",
             }}
           >

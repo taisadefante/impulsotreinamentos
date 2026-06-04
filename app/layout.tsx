@@ -1,5 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://impulsotreinamentos.com.br"),
@@ -17,64 +28,12 @@ export const metadata: Metadata = {
     "Impulso Treinamentos",
     "treinamento primeiros socorros",
     "curso primeiros socorros",
-    "treinamento primeiros socorros empresas",
-    "treinamento primeiros socorros corporativo",
-    "primeiros socorros para empresas",
-    "primeiros socorros para escolas",
-    "capacitação primeiros socorros",
-    "treinamento de emergência para empresas",
-    "treinamento de emergência para escolas",
     "Lei Lucas",
     "treinamento Lei Lucas",
-    "curso Lei Lucas",
-    "capacitação Lei Lucas",
-    "Lei Lucas para escolas",
-    "treinamento Lei Lucas para professores",
-    "treinamento Lei Lucas para creches",
     "saúde ocupacional",
-    "treinamento saúde ocupacional",
-    "saúde ocupacional para empresas",
-    "bem estar corporativo",
-    "saúde mental corporativa",
-    "treinamento saúde mental empresas",
-    "palestra saúde mental corporativa",
-    "segurança no trabalho",
-    "treinamento segurança do trabalho",
-    "capacitação segurança empresarial",
-    "treinamento prevenção de acidentes",
-    "treinamento cultura de segurança",
-    "treinamento empresarial",
-    "treinamento corporativo",
-    "capacitação corporativa",
-    "treinamento para empresas",
-    "treinamento para colaboradores",
-    "treinamento para equipes",
-    "primeiros socorros RJ",
-    "curso primeiros socorros RJ",
-    "treinamento primeiros socorros RJ",
-    "Lei Lucas RJ",
-    "curso Lei Lucas RJ",
-    "treinamento Lei Lucas RJ",
-    "treinamento empresarial RJ",
     "treinamento corporativo RJ",
-    "saúde ocupacional RJ",
-    "saúde mental corporativa RJ",
-    "segurança do trabalho RJ",
-    "primeiros socorros Rio de Janeiro",
-    "Lei Lucas Rio de Janeiro",
+    "primeiros socorros RJ",
     "treinamento para empresas Rio de Janeiro",
-    "treinamento corporativo Rio de Janeiro",
-    "curso de primeiros socorros Rio de Janeiro",
-    "treinamento para escolas",
-    "treinamento para professores",
-    "treinamento para creches",
-    "capacitação para escolas",
-    "treinamento para instituições de ensino",
-    "empresa de treinamento corporativo",
-    "empresa de primeiros socorros",
-    "empresa Lei Lucas",
-    "empresa de capacitação corporativa RJ",
-    "empresa de treinamento em saúde e segurança",
   ],
 
   authors: [{ name: "Impulso Treinamentos" }],
@@ -156,7 +115,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jakarta.variable}`}
+    >
       <body
         suppressHydrationWarning
         style={{
@@ -165,8 +128,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           color: "#fff7e8",
           minHeight: "100vh",
           overflowX: "hidden",
-          fontFamily:
-            "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif",
+          fontFamily: "var(--font-body)",
         }}
       >
         {children}

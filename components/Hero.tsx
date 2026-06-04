@@ -28,20 +28,23 @@ export default function Hero() {
         <Reveal>
           <div className="heroBadge">
             <Sparkles size={17} />
-            Treinamentos corporativos em saúde e segurança
+            Treinamentos corporativos em saúde, segurança e prevenção
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <h1 className="heroTitle">
-            Conhecimento que prepara. <span>Atitude que salva.</span>
+            Treinamentos que preparam pessoas.
+            <br />
+            <span>Atitudes que salvam vidas.</span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.2}>
           <p className="heroText">
-            Capacitações práticas, humanizadas e atualizadas para empresas,
-            escolas e equipes que desejam agir com confiança em situações reais.
+            Capacitações práticas em primeiros socorros, Lei Lucas e saúde
+            ocupacional para empresas, escolas e equipes que valorizam
+            segurança, prevenção e cuidado real.
           </p>
         </Reveal>
 
@@ -170,8 +173,8 @@ const styles = `
 .heroGrid {
   min-height: 88vh;
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-  gap: clamp(30px, 4vw, 54px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .82fr);
+  gap: clamp(34px, 4.5vw, 64px);
   align-items: center;
   padding: clamp(76px, 8vw, 104px) 7%;
   position: relative;
@@ -211,7 +214,12 @@ const styles = `
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(23,0,0,.94), rgba(23,0,0,.62), rgba(23,0,0,.9));
+  background: linear-gradient(
+    90deg,
+    rgba(23,0,0,.96),
+    rgba(23,0,0,.68),
+    rgba(23,0,0,.92)
+  );
   pointer-events: none;
 }
 
@@ -225,18 +233,20 @@ const styles = `
   background: rgba(255,244,223,.08);
   border: 1px solid rgba(255,216,120,.3);
   color: ${C.gold2};
-  font-weight: 900;
+  font-weight: 800;
+  font-size: 15px;
   box-shadow: 0 16px 45px rgba(0,0,0,.18);
 }
 
 .heroTitle {
   margin: 24px 0 0;
-  font-size: clamp(38px, 5.7vw, 78px);
-  line-height: 1.02;
-  letter-spacing: -2.4px;
-  text-transform: uppercase;
+  font-size: clamp(34px, 4.2vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  text-transform: none;
   color: ${C.text};
-  max-width: 920px;
+  max-width: 760px;
+  font-weight: 800;
 }
 
 .heroTitle span {
@@ -246,9 +256,9 @@ const styles = `
 
 .heroText {
   color: ${C.muted};
-  font-size: clamp(16px, 1.45vw, 20px);
+  font-size: clamp(16px, 1.25vw, 19px);
   line-height: 1.65;
-  max-width: 720px;
+  max-width: 650px;
   margin: 24px 0 0;
 }
 
@@ -308,12 +318,16 @@ const styles = `
 
 .heroCard {
   width: 100%;
-  min-height: 500px;
-  border-radius: 42px;
-  padding: 92px 34px 34px;
-  background: linear-gradient(145deg, rgba(255,244,223,.14), rgba(255,255,255,.045));
-  border: 1px solid rgba(255,216,120,.32);
-  box-shadow: 0 34px 120px rgba(0,0,0,.42);
+  min-height: 460px;
+  border-radius: 38px;
+  padding: 82px 30px 30px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,244,223,.13),
+    rgba(255,255,255,.04)
+  );
+  border: 1px solid rgba(255,216,120,.3);
+  box-shadow: 0 30px 100px rgba(0,0,0,.38);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -349,15 +363,15 @@ const styles = `
 }
 
 .heroLogoBox {
-  width: clamp(150px, 15vw, 210px);
-  height: clamp(150px, 15vw, 210px);
-  border-radius: clamp(28px, 3vw, 46px);
+  width: clamp(140px, 13vw, 185px);
+  height: clamp(140px, 13vw, 185px);
+  border-radius: clamp(26px, 3vw, 42px);
   overflow: hidden;
   background: ${C.cream};
   display: grid;
   place-items: center;
   border: 2px solid ${C.gold};
-  box-shadow: 0 0 95px rgba(216,163,63,.38);
+  box-shadow: 0 0 80px rgba(216,163,63,.34);
   position: relative;
   z-index: 2;
 }
@@ -369,8 +383,8 @@ const styles = `
 }
 
 .heroCardTitle {
-  font-size: clamp(25px, 3vw, 36px);
-  margin: 26px 0 8px;
+  font-size: clamp(24px, 2.4vw, 32px);
+  margin: 24px 0 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: ${C.text};
@@ -380,8 +394,8 @@ const styles = `
 
 .heroCardText {
   color: ${C.muted};
-  font-size: clamp(15px, 1.4vw, 17px);
-  max-width: 430px;
+  font-size: clamp(15px, 1.25vw, 16px);
+  max-width: 400px;
   line-height: 1.55;
   margin: 0;
   position: relative;
@@ -391,21 +405,21 @@ const styles = `
 .heroMiniGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
   width: 100%;
-  margin-top: 45px;
+  margin-top: 38px;
   position: relative;
   z-index: 2;
 }
 
 .heroMini {
-  padding: 22px 20px;
-  border-radius: 24px;
+  padding: 20px 18px;
+  border-radius: 22px;
   background: rgba(255,244,223,.08);
   border: 1px solid rgba(255,216,120,.18);
   color: ${C.cream};
   text-align: left;
-  min-height: 112px;
+  min-height: 104px;
 }
 
 .heroMiniIcon {
@@ -427,21 +441,21 @@ const styles = `
 
 @keyframes floatPulse {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 @media (max-width: 1180px) {
   .heroGrid {
-    grid-template-columns: minmax(0, 1fr) minmax(330px, .85fr);
+    grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr);
     gap: 34px;
   }
 
   .heroTitle {
-    font-size: clamp(38px, 5.3vw, 68px);
+    font-size: clamp(34px, 4.5vw, 54px);
   }
 
   .heroCard {
-    padding: 88px 26px 30px;
+    padding: 82px 24px 28px;
   }
 }
 
@@ -468,7 +482,7 @@ const styles = `
   }
 
   .heroCard {
-    max-width: 620px;
+    max-width: 560px;
     min-height: auto;
     margin: 0 auto;
   }
@@ -480,8 +494,8 @@ const styles = `
   }
 
   .heroTitle {
-    font-size: clamp(36px, 9vw, 56px);
-    letter-spacing: -1.7px;
+    font-size: clamp(34px, 8vw, 48px);
+    letter-spacing: -1.2px;
   }
 
   .heroButtons {
@@ -489,8 +503,8 @@ const styles = `
   }
 
   .heroCard {
-    border-radius: 34px;
-    padding: 88px 24px 30px;
+    border-radius: 32px;
+    padding: 82px 24px 30px;
   }
 }
 
@@ -510,9 +524,9 @@ const styles = `
   }
 
   .heroTitle {
-    font-size: clamp(33px, 10.4vw, 45px);
-    line-height: 1.05;
-    letter-spacing: -1.4px;
+    font-size: clamp(31px, 9.3vw, 42px);
+    line-height: 1.08;
+    letter-spacing: -1px;
   }
 
   .heroText {
@@ -542,7 +556,7 @@ const styles = `
 
   .heroCard {
     border-radius: 30px;
-    padding: 86px 18px 26px;
+    padding: 78px 18px 26px;
   }
 
   .heroCardTag {
@@ -552,13 +566,13 @@ const styles = `
   }
 
   .heroLogoBox {
-    width: 150px;
-    height: 150px;
+    width: 145px;
+    height: 145px;
   }
 
   .heroCardTitle {
     margin-top: 22px;
-    font-size: 25px;
+    font-size: 24px;
     line-height: 1.15;
   }
 
@@ -567,7 +581,7 @@ const styles = `
   }
 
   .heroMiniGrid {
-    margin-top: 34px;
+    margin-top: 32px;
     grid-template-columns: 1fr;
     gap: 14px;
   }
@@ -580,7 +594,7 @@ const styles = `
 
 @media (max-width: 380px) {
   .heroTitle {
-    font-size: 31px;
+    font-size: 30px;
   }
 
   .heroPrimaryBtn,
@@ -590,7 +604,7 @@ const styles = `
   }
 
   .heroCard {
-    padding: 82px 14px 22px;
+    padding: 76px 14px 22px;
   }
 }
 `;
