@@ -13,6 +13,7 @@ import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,6 +36,8 @@ export default function Home() {
       <Trainings />
       <Benefits />
       <Testimonials />
+      <FAQ />
+
       <CTA />
       <Contact />
       <Footer />
