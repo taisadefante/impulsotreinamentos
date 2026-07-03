@@ -1,12 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import type { ReactNode } from "react";
 import {
-  CalendarDays,
   ChevronRight,
-  GraduationCap,
   HeartPulse,
   ShieldCheck,
   Sparkles,
@@ -15,36 +11,40 @@ import {
 import { C, whatsappLink } from "@/data/siteData";
 import Reveal from "./Reveal";
 
+const heroImage = "/images/hero-impulso-treinamento.png";
+
 export default function Hero() {
   return (
-    <section id="inicio" className="heroGrid">
+    <section id="inicio" className="hero">
       <style>{styles}</style>
 
-      <div className="heroGlow heroGlowLeft" />
-      <div className="heroGlow heroGlowRight" />
+      <div className="heroBg" />
       <div className="heroOverlay" />
+      <div className="heroGlow" />
 
       <div className="heroContent">
         <Reveal>
           <div className="heroBadge">
             <Sparkles size={17} />
-            Treinamentos corporativos em saúde, segurança e prevenção
+            Treinamentos em saúde, segurança e prevenção
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <h1 className="heroTitle">
-            Treinamentos que preparam pessoas.
+            Capacitando pessoas
             <br />
-            <span>Atitudes que salvam vidas.</span>
+            para agir com segurança.
+            <br />
+            <span>Preparando vidas para salvar vidas.</span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.2}>
           <p className="heroText">
-            Capacitações práticas em primeiros socorros, Lei Lucas e saúde
-            ocupacional para empresas, escolas e equipes que valorizam
-            segurança, prevenção e cuidado real.
+            Treinamentos práticos, palestras educativas e programas de
+            prevenção para empresas, escolas e instituições que valorizam
+            cuidado, segurança e responsabilidade.
           </p>
         </Reveal>
 
@@ -81,72 +81,17 @@ export default function Hero() {
           </div>
         </Reveal>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.94, y: 24 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="heroCard"
-      >
-        <div className="heroCardGlow" />
-        <div className="heroCardTag">100% prático</div>
-
-        <motion.div
-          whileHover={{ scale: 1.04, rotate: 1 }}
-          className="heroLogoBox"
-        >
-          <Image
-            src="/logo.png"
-            alt="Logo Impulso Treinamentos"
-            width={230}
-            height={230}
-            priority
-            className="heroLogo"
-          />
-        </motion.div>
-
-        <h2 className="heroCardTitle">Impulso Treinamentos</h2>
-
-        <p className="heroCardText">
-          Primeiros Socorros • Lei Lucas • Saúde Ocupacional • Bem-estar
-        </p>
-
-        <div className="heroMiniGrid">
-          <Mini
-            icon={<CalendarDays size={24} />}
-            title="Formatos"
-            text="1 ou 2 dias"
-          />
-          <Mini
-            icon={<GraduationCap size={24} />}
-            title="Inclui"
-            text="Certificado"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
 
-function Mini({
+function TrustItem({
   icon,
-  title,
   text,
 }: {
-  icon: ReactNode;
-  title: string;
+  icon: React.ReactNode;
   text: string;
 }) {
-  return (
-    <motion.div whileHover={{ y: -5, scale: 1.03 }} className="heroMini">
-      <div className="heroMiniIcon">{icon}</div>
-      <strong>{title}</strong>
-      <span>{text}</span>
-    </motion.div>
-  );
-}
-
-function TrustItem({ icon, text }: { icon: ReactNode; text: string }) {
   return (
     <div className="heroTrustItem">
       <span>{icon}</span>
@@ -170,115 +115,115 @@ function WhatsappOfficialIcon() {
 }
 
 const styles = `
-.heroGrid {
-  min-height: 88vh;
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(340px, .82fr);
-  gap: clamp(34px, 4.5vw, 64px);
-  align-items: center;
-  padding: clamp(76px, 8vw, 104px) 7%;
+.hero {
+  min-height: 94vh;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: clamp(92px, 9vw, 130px) 7%;
+  background: ${C.bg};
 }
 
-.heroContent,
-.heroCard {
-  position: relative;
-  z-index: 2;
-}
-
-.heroGlow {
+.heroBg {
   position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.heroGlowLeft {
-  width: 420px;
-  height: 420px;
-  background: rgba(255,216,120,.12);
-  filter: blur(70px);
-  top: 30px;
-  left: -120px;
-}
-
-.heroGlowRight {
-  width: 520px;
-  height: 520px;
-  background: rgba(161,15,18,.24);
-  filter: blur(90px);
-  right: -160px;
-  bottom: 20px;
+  inset: 0;
+  background-image: url("${heroImage}");
+  background-size: cover;
+  background-position: center right;
+  transform: scale(1.02);
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(23,0,0,.96),
-    rgba(23,0,0,.68),
-    rgba(23,0,0,.92)
-  );
+  background:
+    linear-gradient(
+      90deg,
+      rgba(23,0,0,.98) 0%,
+      rgba(23,0,0,.93) 27%,
+      rgba(23,0,0,.74) 48%,
+      rgba(23,0,0,.38) 73%,
+      rgba(23,0,0,.20) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(23,0,0,.38) 0%,
+      rgba(23,0,0,.10) 45%,
+      rgba(23,0,0,.90) 100%
+    );
+}
+
+.heroGlow {
+  position: absolute;
+  width: 540px;
+  height: 540px;
+  left: -180px;
+  top: 80px;
+  border-radius: 50%;
+  background: rgba(255,216,120,.16);
+  filter: blur(90px);
   pointer-events: none;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
 }
 
 .heroBadge {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  max-width: 100%;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255,244,223,.08);
-  border: 1px solid rgba(255,216,120,.3);
+  background: rgba(255,244,223,.09);
+  border: 1px solid rgba(255,216,120,.32);
   color: ${C.gold2};
-  font-weight: 800;
+  font-weight: 900;
   font-size: 15px;
-  box-shadow: 0 16px 45px rgba(0,0,0,.18);
+  box-shadow: 0 16px 45px rgba(0,0,0,.20);
 }
 
 .heroTitle {
-  margin: 24px 0 0;
-  font-size: clamp(34px, 4.2vw, 58px);
-  line-height: 1.08;
-  letter-spacing: -1.5px;
-  text-transform: none;
+  margin: 26px 0 0;
+  font-size: clamp(38px, 5vw, 72px);
+  line-height: 1.03;
+  letter-spacing: -1.8px;
   color: ${C.text};
-  max-width: 760px;
-  font-weight: 800;
+  font-weight: 950;
 }
 
 .heroTitle span {
   color: ${C.gold2};
-  display: inline-block;
 }
 
 .heroText {
   color: ${C.muted};
-  font-size: clamp(16px, 1.25vw, 19px);
+  font-size: clamp(16px, 1.3vw, 20px);
   line-height: 1.65;
   max-width: 650px;
-  margin: 24px 0 0;
+  margin: 26px 0 0;
 }
 
 .heroButtons {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 34px;
 }
 
 .heroPrimaryBtn,
 .heroSecondaryBtn {
-  min-height: 54px;
+  min-height: 56px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 15px 24px;
+  padding: 15px 25px;
   border-radius: 999px;
-  font-weight: 900;
+  font-weight: 950;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -286,13 +231,14 @@ const styles = `
 .heroPrimaryBtn {
   background: linear-gradient(135deg, ${C.gold}, ${C.gold2});
   color: ${C.dark};
-  box-shadow: 0 18px 60px rgba(216,163,63,.30);
+  box-shadow: 0 18px 60px rgba(216,163,63,.34);
 }
 
 .heroSecondaryBtn {
-  border: 1px solid rgba(255,216,120,.25);
+  border: 1px solid rgba(255,216,120,.30);
   color: ${C.cream};
-  background: rgba(255,244,223,.045);
+  background: rgba(255,244,223,.055);
+  backdrop-filter: blur(10px);
 }
 
 .heroTrust {
@@ -300,7 +246,7 @@ const styles = `
   align-items: center;
   gap: 22px;
   flex-wrap: wrap;
-  margin-top: 28px;
+  margin-top: 30px;
 }
 
 .heroTrustItem {
@@ -308,7 +254,7 @@ const styles = `
   align-items: center;
   gap: 8px;
   color: ${C.muted};
-  font-weight: 800;
+  font-weight: 850;
   font-size: 14px;
 }
 
@@ -316,216 +262,65 @@ const styles = `
   color: ${C.gold2};
 }
 
-.heroCard {
-  width: 100%;
-  min-height: 460px;
-  border-radius: 38px;
-  padding: 82px 30px 30px;
-  background: linear-gradient(
-    145deg,
-    rgba(255,244,223,.13),
-    rgba(255,255,255,.04)
-  );
-  border: 1px solid rgba(255,216,120,.3);
-  box-shadow: 0 30px 100px rgba(0,0,0,.38);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  animation: floatPulse 7s ease-in-out infinite;
-  overflow: hidden;
-}
-
-.heroCardGlow {
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: rgba(255,216,120,.10);
-}
-
-.heroCardTag {
-  position: absolute;
-  left: 26px;
-  top: 26px;
-  padding: 9px 13px;
-  border-radius: 999px;
-  background: rgba(255,244,223,.08);
-  border: 1px solid rgba(255,216,120,.22);
-  color: ${C.gold2};
-  font-weight: 900;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.heroLogoBox {
-  width: clamp(140px, 13vw, 185px);
-  height: clamp(140px, 13vw, 185px);
-  border-radius: clamp(26px, 3vw, 42px);
-  overflow: hidden;
-  background: ${C.cream};
-  display: grid;
-  place-items: center;
-  border: 2px solid ${C.gold};
-  box-shadow: 0 0 80px rgba(216,163,63,.34);
-  position: relative;
-  z-index: 2;
-}
-
-.heroLogo {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-.heroCardTitle {
-  font-size: clamp(24px, 2.4vw, 32px);
-  margin: 24px 0 8px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: ${C.text};
-  position: relative;
-  z-index: 2;
-}
-
-.heroCardText {
-  color: ${C.muted};
-  font-size: clamp(15px, 1.25vw, 16px);
-  max-width: 400px;
-  line-height: 1.55;
-  margin: 0;
-  position: relative;
-  z-index: 2;
-}
-
-.heroMiniGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  width: 100%;
-  margin-top: 38px;
-  position: relative;
-  z-index: 2;
-}
-
-.heroMini {
-  padding: 20px 18px;
-  border-radius: 22px;
-  background: rgba(255,244,223,.08);
-  border: 1px solid rgba(255,216,120,.18);
-  color: ${C.cream};
-  text-align: left;
-  min-height: 104px;
-}
-
-.heroMiniIcon {
-  color: ${C.gold2};
-}
-
-.heroMini strong {
-  display: block;
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.heroMini span {
-  display: block;
-  color: ${C.muted};
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-@keyframes floatPulse {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@media (max-width: 1180px) {
-  .heroGrid {
-    grid-template-columns: minmax(0, 1fr) minmax(320px, .82fr);
-    gap: 34px;
-  }
-
-  .heroTitle {
-    font-size: clamp(34px, 4.5vw, 54px);
-  }
-
-  .heroCard {
-    padding: 82px 24px 28px;
-  }
-}
-
-@media (max-width: 1080px) {
-  .heroGrid {
-    grid-template-columns: 1fr;
+@media (max-width: 980px) {
+  .hero {
     min-height: auto;
-    padding-top: 76px;
+    padding: 86px 6% 90px;
+  }
+
+  .heroBg {
+    background-position: center right;
+  }
+
+  .heroOverlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(23,0,0,.98) 0%,
+        rgba(23,0,0,.90) 48%,
+        rgba(23,0,0,.58) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(23,0,0,.28) 0%,
+        rgba(23,0,0,.88) 100%
+      );
   }
 
   .heroContent {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 76px 5% 78px;
     text-align: center;
   }
 
-  .heroTitle,
-  .heroText {
-    margin-left: auto;
-    margin-right: auto;
+  .heroBg {
+    background-position: 68% center;
   }
 
-  .heroButtons,
-  .heroTrust {
-    justify-content: center;
-  }
-
-  .heroCard {
-    max-width: 560px;
-    min-height: auto;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 760px) {
-  .heroGrid {
-    padding: 66px 6% 72px;
-  }
-
-  .heroTitle {
-    font-size: clamp(34px, 8vw, 48px);
-    letter-spacing: -1.2px;
-  }
-
-  .heroButtons {
-    justify-content: center;
-  }
-
-  .heroCard {
-    border-radius: 32px;
-    padding: 82px 24px 30px;
-  }
-}
-
-@media (max-width: 620px) {
-  .heroGrid {
-    padding: 58px 5% 64px;
-    gap: 34px;
+  .heroOverlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(23,0,0,.94) 0%,
+        rgba(23,0,0,.84) 42%,
+        rgba(23,0,0,.96) 100%
+      );
   }
 
   .heroBadge {
     width: 100%;
     justify-content: center;
-    text-align: center;
     font-size: 12px;
-    padding: 10px 12px;
     line-height: 1.35;
   }
 
   .heroTitle {
-    font-size: clamp(31px, 9.3vw, 42px);
-    line-height: 1.08;
+    font-size: clamp(34px, 9vw, 46px);
     letter-spacing: -1px;
   }
 
@@ -536,75 +331,20 @@ const styles = `
 
   .heroButtons {
     flex-direction: column;
-    gap: 12px;
   }
 
   .heroButtons a {
     width: 100%;
     white-space: normal;
-    text-align: center;
   }
 
   .heroTrust {
-    gap: 12px;
     justify-content: center;
+    gap: 12px;
   }
 
   .heroTrustItem {
     font-size: 13px;
-  }
-
-  .heroCard {
-    border-radius: 30px;
-    padding: 78px 18px 26px;
-  }
-
-  .heroCardTag {
-    left: 18px;
-    top: 18px;
-    font-size: 11px;
-  }
-
-  .heroLogoBox {
-    width: 145px;
-    height: 145px;
-  }
-
-  .heroCardTitle {
-    margin-top: 22px;
-    font-size: 24px;
-    line-height: 1.15;
-  }
-
-  .heroCardText {
-    font-size: 15px;
-  }
-
-  .heroMiniGrid {
-    margin-top: 32px;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .heroMini {
-    min-height: auto;
-    padding: 18px;
-  }
-}
-
-@media (max-width: 380px) {
-  .heroTitle {
-    font-size: 30px;
-  }
-
-  .heroPrimaryBtn,
-  .heroSecondaryBtn {
-    padding: 14px 18px;
-    font-size: 14px;
-  }
-
-  .heroCard {
-    padding: 76px 14px 22px;
   }
 }
 `;
